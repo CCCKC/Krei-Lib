@@ -33,5 +33,11 @@ state_game = {
 	Draw: function( canvasWindow, settings ) { 
 		canvasWindow.fillStyle = "#333333";
 		canvasWindow.fillRect( 0, 0, settings.width, settings.height );
+	},
+	
+	// For menus using the UI lib, this should only
+	// return true when a change is made. In-game, it can return true all the time.
+	Redraw: function() {
+		return true;
 	}
 };
