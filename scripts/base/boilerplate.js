@@ -1,8 +1,6 @@
 $( document ).ready( function() 
 {
 	var settings = { width: 640, height: 480, fps: 30 };
-	var images = {};
-	var sounds = {};
 	
 	$( "canvas" ).attr( "width", settings.width );
 	$( "canvas" ).attr( "height", settings.height );
@@ -10,6 +8,7 @@ $( document ).ready( function()
 	var canvasWindow = $( "canvas" )[0].getContext( "2d" );
 	
 	ui.Setup( canvasWindow, settings.width, settings.height );
+	language.Setup();
 	
 	// Loading Screen
 	canvasWindow.fillStyle = "#398eed";

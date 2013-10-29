@@ -25,6 +25,7 @@ ui = {
 	},
 	
 	Draw: function() {
+		debug.Out( "Draw UI" );
 		for ( var i = 0; i < this.simpleButtons.length; i++ )
 		{
 			this.simpleButtons[i].Draw();

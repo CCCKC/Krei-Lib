@@ -2,6 +2,7 @@ state_game = {
 	Setup: function( settings ) {		
 		this.nextState = "";
 		this.keys = { up: 38, down: 40, left: 37, right: 39, space: 32 };
+		this.drawChanges = true;
 	
 		this.images = {};
 		//this.images.pathbase = "assets/graphics/";
@@ -38,6 +39,9 @@ state_game = {
 	// For menus using the UI lib, this should only
 	// return true when a change is made. In-game, it can return true all the time.
 	Redraw: function() {
-		return true;
+		if ( this.drawChanges ) {
+			this.drawChanges = false;
+			return true;
+		}
 	}
 };
