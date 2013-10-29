@@ -9,6 +9,8 @@ $( document ).ready( function()
 	
 	var canvasWindow = $( "canvas" )[0].getContext( "2d" );
 	
+	ui.Setup( canvasWindow, settings.width, settings.height );
+	
 	// Loading Screen
 	canvasWindow.fillStyle = "#398eed";
 	canvasWindow.fillRect( 0, 0, settings.width, settings.height );

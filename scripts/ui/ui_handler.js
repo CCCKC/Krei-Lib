@@ -108,8 +108,8 @@ ui = {
 				ui.refCanvas.rect( this.posX, this.posY, this.width, this.height )
 				ui.refCanvas.stroke();
 				
-				var centerX = this.posX + this.width / 2 - (this.caption.length * this.fontSize * 0.4 / 2);
-				var centerY = this.posY + this.height / 1.5;
+				var centerX = this.posX + this.width / 2 - (this.caption.length * this.fontSize * 0.5 / 2);
+				var centerY = this.posY + this.height / 1.6;
 				
 				ui.refCanvas.fillStyle = this.fgColor;
 				ui.refCanvas.font = this.fontSize + "px Arial";
@@ -148,7 +148,7 @@ ui = {
 		
 	},
 	
-	NewGraphicButton: function( x, y, w, h, fx, fy, fw, fh, img, k, callback ) {
+	NewGraphicButton: function( x, y, w, h, fx, fy, fw, fh, img, k, hasBorder, callback ) {
 		
 		this.graphicButtons[ this.graphicButtons.length ] = {
 			
@@ -162,12 +162,19 @@ ui = {
 			frameHeight: fh,
 			image: img,
 			key: k,
+			border: hasBorder,
 			
 			OnClick: callback,			
 			Draw: function() {				
 				ui.refCanvas.drawImage( this.image,
 					this.filmstripX, this.filmstripY, this.frameWidth, this.frameHeight,
 					this.posX, this.posY, this.width, this.height );
+				if ( this.border ) 
+				{
+					ui.refCanvas.strokeStyle = "#000000";
+					ui.refCanvas.rect( this.posX, this.posY, this.width, this.height )
+					ui.refCanvas.stroke();
+				}
 			},
 			IsClicked: function( mouseX, mouseY ) {
 				return ( this.posX <= mouseX 
