@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Title</title>
+		<style>
+			body { background: #222222; font-family: sans-serif; }
+			.canvas-container {
+				display: block;
+				margin: 0 auto;
+				width: 640px;
+			}
+			#debug { position: fixed; left: 0; top: 0; width: 200px; height: 480px; }
+			.canvas-container { background: #aaaaaa; }
+		</style>
+		
+		<script src="scripts/external_lib/jquery-1.10.2.min.js"></script>
+		<script src="scripts/base/boilerplate.js"></script>
+		<script src="scripts/base/main.js"></script>
+		<script src="scripts/debug/debug.js"></script>		
+		<script src="scripts/maps/map_handler.js"></script>	
+		<script src="scripts/ui/ui_handler.js"></script>	
+		<script src="scripts/localization/language_handler.js"></script>	
+		<script src="scripts/states/title_state.js"></script>	
+	</head>
+	
+	<body>		
+		<div class="canvas-container">
+			<canvas id="cnvWindow" width="640" height="480">
+			</canvas>
+		</div>
+		
+		<textarea id="debug"></textarea>
+	</body>
+</html>
