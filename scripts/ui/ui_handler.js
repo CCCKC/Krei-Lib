@@ -10,7 +10,6 @@ ui = {
 	},
 	
 	Reset: function() {
-		debug.Out( "Reset" );
 		while ( this.simpleButtons.length > 0 ) 	{ this.simpleButtons.pop(); }
 		while ( this.graphicButtons.length > 0 ) 	{ this.graphicButtons.pop(); }
 		while ( this.images.length > 0 ) 			{ this.images.pop(); }
@@ -69,18 +68,19 @@ ui = {
 		}	
 	},
 	
-	NewLabel: function( x, y, text, color, size ) {
-		
+	NewLabel: function( x, y, text, color, size, align ) {
 		this.labels[ this.labels.length ] = {
 			posX: x,
 			posY: y,
 			caption: text,
 			fontSize: size,
 			fgColor: color,
+			alignment: align,
 			
-			Draw: function() {
-				ui.refCanvas.fillStyle = this.fgColor;
+			Draw: function() {		
 				ui.refCanvas.font = this.fontSize + "px Arial";
+				ui.refCanvas.fillStyle = this.fgColor;
+				ui.refCanvas.textAlign = this.alignment;
 				ui.refCanvas.fillText( this.caption, this.posX, this.posY );
 			}
 		}
@@ -108,13 +108,13 @@ ui = {
 				ui.refCanvas.strokeStyle = this.fgColor;
 				ui.refCanvas.rect( this.posX, this.posY, this.width, this.height )
 				ui.refCanvas.stroke();
-				
-				var centerX = this.posX + this.width / 2 - (this.caption.length * this.fontSize * 0.5 / 2);
+			
 				var centerY = this.posY + this.height / 1.6;
 				
 				ui.refCanvas.fillStyle = this.fgColor;
 				ui.refCanvas.font = this.fontSize + "px Arial";
-				ui.refCanvas.fillText( this.caption, centerX, centerY );
+				ui.refCanvas.textAlign = "center";
+				ui.refCanvas.fillText( this.caption, this.posX + this.width / 2, centerY );
 			},
 			IsClicked: function( mouseX, mouseY ) {
 				return ( this.posX <= mouseX 

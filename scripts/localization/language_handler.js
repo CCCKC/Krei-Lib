@@ -11,17 +11,11 @@ language = {
 		return this.isLoaded;
 	},
 	
-	LoadLanguageFile: function( code ) {
-		debug.Out( "Load " + this.languagePath + code + ".json" );
-		
+	LoadLanguageFile: function( code ) {		
 		$.getJSON( this.languagePath + code + ".json", function( json ) { 
 			language.text = json;
 			language.isLoaded = true;
-			
-			debug.Out( "main-title: " + language.text["main-title"] );
 		} );
-		
-		debug.Out( "End load language file" );
 	},
 	
 	SetLanguage: function( code ) {		
