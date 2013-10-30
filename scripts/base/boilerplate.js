@@ -23,6 +23,7 @@ $( document ).ready( function()
 		if ( language.Ready() )
 		{
 			image_handler.Setup();
+			audio_handler.Setup();
 			entity_handler.Setup();
 			
 			ui.Setup( canvasWindow, settings.width, settings.height );
