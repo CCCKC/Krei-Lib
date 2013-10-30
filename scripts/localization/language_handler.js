@@ -29,7 +29,6 @@ language = {
 	}, 
 	
 	Out: function( key ) {		
-		debug.Out( "Language[" + key + "] = " + this.text[key] );
 		if ( this.text[key] == "undefined" ) 
 		{
 			return "";

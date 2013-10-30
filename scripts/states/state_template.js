@@ -1,21 +1,14 @@
 state_game = {
+	name : "state",
+	
 	Setup: function( settings ) {		
 		this.nextState = "";
 		this.keys = { up: 38, down: 40, left: 37, right: 39, space: 32 };
 		this.drawChanges = true;
+	},
 	
-		this.images = {};
-		//this.images.pathbase = "assets/graphics/";
-		
-		//this.images.tileset = new Image();
-		//this.images.tileset.src = this.images.pathbase + "tileset.png";
-		
-		this.audio = {};
-		this.audio.pathbase = "content/audio/";
-		//audio.song1 = new Audio( audio.pathbase + "song1.ogg" );
-		//audio.song1.play();
-		
-		//map_handler.Setup( settings, "assets/maps/level1.json" );
+	Name: function() { 
+		return this.name; 
 	},
 	
 	HandleKeyDown: function( ev ) {
