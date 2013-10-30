@@ -23,12 +23,13 @@ $( document ).ready( function()
 		if ( language.Ready() )
 		{
 			image_handler.Setup();
+			entity_handler.Setup();
 			
 			ui.Setup( canvasWindow, settings.width, settings.height );
 			
-			window.addEventListener( "keydown", 	main.HandleKeyDown, false );
-			window.addEventListener( "keyup", 		main.HandleKeyUp, false );
-			window.addEventListener( "mousedown", 	main.HandleMouseDown, false );
+			window.addEventListener( "keydown", 	main.HandleKeyDown, 	false );
+			window.addEventListener( "keyup", 		main.HandleKeyUp, 		false );
+			window.addEventListener( "mousedown", 	main.HandleMouseDown, 	false );
 			
 			main.Setup( settings );
 			
