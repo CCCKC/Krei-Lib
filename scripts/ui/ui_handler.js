@@ -10,6 +10,7 @@ ui = {
 	},
 	
 	Reset: function() {
+		debug.Out( "Reset" );
 		while ( this.simpleButtons.length > 0 ) 	{ this.simpleButtons.pop(); }
 		while ( this.graphicButtons.length > 0 ) 	{ this.graphicButtons.pop(); }
 		while ( this.images.length > 0 ) 			{ this.images.pop(); }
@@ -25,7 +26,6 @@ ui = {
 	},
 	
 	Draw: function() {
-		debug.Out( "Draw UI" );
 		for ( var i = 0; i < this.simpleButtons.length; i++ )
 		{
 			this.simpleButtons[i].Draw();

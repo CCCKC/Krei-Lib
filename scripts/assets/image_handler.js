@@ -1,12 +1,13 @@
 image_handler = {
-	Setup: function( pathbase ) {
+	Setup: function() {
 		this.images = {};
-
+		// Setup
+		this.images.pathbase = CONFIG.imagePath;
+	},
+	
+	Reset: function() {
 		// Reset
 		while ( this.images.length > 0 ) 	{ this.images.pop(); }
-		
-		// Setup
-		this.images.pathbase = pathbase;
 	},
 	
 	LoadImage: function( filename, fileextention ) {
