@@ -104,10 +104,6 @@ ui = {
 			Draw: function() {
 				ui.refCanvas.fillStyle = this.bgColor;
 				ui.refCanvas.fillRect( this.posX, this.posY, this.width, this.height )
-					
-				ui.refCanvas.strokeStyle = this.fgColor;
-				ui.refCanvas.rect( this.posX, this.posY, this.width, this.height )
-				ui.refCanvas.stroke();
 			
 				var centerY = this.posY + this.height / 1.6;
 				
