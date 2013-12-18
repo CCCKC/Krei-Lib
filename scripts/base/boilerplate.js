@@ -13,6 +13,8 @@ $( document ).ready( function()
 	canvasWindow.fillStyle = "#ffffff";
 	canvasWindow.fillText( "Loading...", 10, 10 );
 
+	debug.Out( "Setup Languages" );
+
 	language.Setup( settings );
 	
 	setTimeout( FinishSetup, 100 );
@@ -22,17 +24,23 @@ $( document ).ready( function()
 		// Is the language done being loaded?
 		if ( language.Ready() )
 		{
+			debug.Out( "Setup Image Handler" );
 			image_handler.Setup();
+			debug.Out( "Setup Audio Handler" );
 			audio_handler.Setup();
+			debug.Out( "Setup Entity Handler" );
 			entity_handler.Setup();
 			
+			debug.Out( "Setup UI" );
 			ui.Setup( canvasWindow, settings.width, settings.height );
 			
+			debug.Out( "Setup main" );
+			main.Setup( settings );
+			
+			debug.Out( "Setup Input Listeners" );
 			window.addEventListener( "keydown", 	main.HandleKeyDown, 	false );
 			window.addEventListener( "keyup", 		main.HandleKeyUp, 		false );
 			window.addEventListener( "mousedown", 	main.HandleMouseDown, 	false );
-			
-			main.Setup( settings );
 			
 			setInterval( function() {
 				main.Update( settings );
@@ -41,7 +49,7 @@ $( document ).ready( function()
 		}
 		else
 		{
-			debug.Out( "Still loading..." );
+			//debug.Out( "Still loading..." );
 			setTimeout( FinishSetup, 100 );
 		}
 	}

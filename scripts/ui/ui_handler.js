@@ -7,6 +7,8 @@ ui = {
 		this.graphicButtons = new Array();
 		this.images			= new Array();
 		this.labels 		= new Array();
+		this.viewPath 		= CONFIG.viewPath;
+		this.isLoaded		= true;
 	},
 	
 	Reset: function() {
@@ -24,7 +26,49 @@ ui = {
 		while ( this.labels.length > 0 ) 			{ this.labels.pop(); }
 	},
 	
+	LoadView: function( filename ) {	
+		this.Reset();
+		this.isLoaded = false;
+		$.getJSON( this.viewPath + filename + ".json", function( json ) {
+			
+			$.each( json, function( index, element ) {
+				if ( element["type"] == "simple-button" ) 
+				{
+					var event;
+					if ( element["event"]["type"] == "change-state" )
+					{
+						// Not sure if this will work - scope?
+						event = function() {
+							debug.Out( "Go to state " + element["event"]["to"] );
+							main.currentState.nextState = element["event"]["to"];
+						}
+					}
+					
+					ui.NewSimpleButton( element["x"], element["y"], 
+						element["width"], element["height"], 
+						language.Out( element["text-key"] ), 
+						element["background"], element["foreground"], 
+						element["size"], event );
+				}
+				
+				else if ( element["type"] == "label" )
+				{
+					ui.NewLabel( element["x"], element["y"], 
+						language.Out( element["text-key"] ),
+						element["foreground"], element["size"], element["align"] );
+				}
+			} );		
+			
+			ui.isLoaded = true;
+		} );	
+	},
+	
 	Draw: function() {
+		if ( !this.isLoaded ) 
+		{
+			return;
+		}
+		
 		for ( var i = 0; i < this.simpleButtons.length; i++ )
 		{
 			this.simpleButtons[i].Draw();
@@ -47,12 +91,16 @@ ui = {
 	},
 	
 	Click: function( ev ) { 
+		if ( !this.isLoaded ) 
+		{
+			return;
+		}
+		
 		var mouseX = ev.clientX - $( "#cnvWindow" ).position().left;
 		var mouseY = ev.clientY - $( "#cnvWindow" ).position().top;
 		
-		
 		for ( var i = 0; i < this.simpleButtons.length; i++ )
-		{			
+		{	
 			if ( this.simpleButtons[i].IsClicked( mouseX, mouseY ) )
 			{
 				this.simpleButtons[i].OnClick();
